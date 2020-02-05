@@ -16,12 +16,14 @@
 
 package com.hustlebar.helidonbar;
 
+import java.util.HashSet;
 import java.util.Set;
 
 import javax.enterprise.context.ApplicationScoped;
 import javax.ws.rs.ApplicationPath;
 import javax.ws.rs.core.Application;
 
+import com.hustlebar.helidonbar.ping.PingApi;
 import io.helidon.common.CollectionsHelper;
 
 /**
@@ -33,6 +35,16 @@ public class GreetApplication extends Application {
 
     @Override
     public Set<Class<?>> getClasses() {
-        return CollectionsHelper.setOf(GreetResource.class);
+        Set<Class<?>> classes = new HashSet<>();
+
+        classes.addAll(addResources());
+        return classes;
+    }
+
+    private Set<Class<?>> addResources() {
+        return CollectionsHelper.setOf(
+                GreetResource.class,
+                PingApi.class
+        );
     }
 }
