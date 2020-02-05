@@ -66,3 +66,18 @@ kubectl get pods                             # Verify connectivity to cluster
 kubectl create -f app.yaml               # Deploy application
 kubectl get service helidonbar  # Verify deployed service
 ```
+
+## Focus
+* JAX-RS
+    - REST APIs
+    - Start up / Shutdown listener
+    - Exception handling
+* Config
+    - Microprofile configuration options
+* Healthcheck
+* Metrics
+* Fault tolerance
+* Open API
+* Rest Client
+* JWT Authentication
+* Open tracing
