@@ -23,6 +23,7 @@ import javax.enterprise.context.ApplicationScoped;
 import javax.ws.rs.ApplicationPath;
 import javax.ws.rs.core.Application;
 
+import com.hustlebar.helidonbar.country.CountryApi;
 import com.hustlebar.helidonbar.ping.PingApi;
 import io.helidon.common.CollectionsHelper;
 
@@ -31,7 +32,7 @@ import io.helidon.common.CollectionsHelper;
  */
 @ApplicationScoped
 @ApplicationPath("/")
-public class GreetApplication extends Application {
+public class HelidonbarApplication extends Application {
 
     @Override
     public Set<Class<?>> getClasses() {
@@ -44,7 +45,8 @@ public class GreetApplication extends Application {
     private Set<Class<?>> addResources() {
         return CollectionsHelper.setOf(
                 GreetResource.class,
-                PingApi.class
+                PingApi.class,
+                CountryApi.class
         );
     }
 }
