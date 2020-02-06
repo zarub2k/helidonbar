@@ -16,6 +16,17 @@ public class CountryManager {
         return countries;
     }
 
+    public String add(Country country) throws HelidonbarException {
+        System.out.println("Enters CountryManager.add()");
+
+        if (!isValid(country)) {
+            throw new HelidonbarException(400, "Given country information is not valid");
+        }
+
+        countries.add(country);
+        return country.getCode();
+    }
+
     public Country get(String code) throws HelidonbarException {
         System.out.println("Enters CountryManager.get() with code: " + code);
 
@@ -35,6 +46,22 @@ public class CountryManager {
         }
 
         return matchedCountry;
+    }
+
+    private boolean isValid(Country country) {
+        if (country.getCode() == null || country.getCode().isEmpty()) {
+            return false;
+        }
+
+        if (country.getName() == null || country.getName().isEmpty()) {
+            return false;
+        }
+
+        if (country.getCapital() == null || country.getCapital().isEmpty()) {
+            return false;
+        }
+
+        return true;
     }
 
     static {
