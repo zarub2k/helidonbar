@@ -85,4 +85,4 @@ kubectl get service helidonbar  # Verify deployed service
     - Start up / Shutdown listener
 
 ## Reference
-    * https://www.sport-histoire.fr/en/Geography/ISO_codes_countries.php
+    https://www.sport-histoire.fr/en/Geography/ISO_codes_countries.php
