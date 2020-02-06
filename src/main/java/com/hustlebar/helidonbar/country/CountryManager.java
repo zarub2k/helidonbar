@@ -9,6 +9,7 @@ import java.util.List;
 @ApplicationScoped
 public class CountryManager {
     private static final List<Country> countries = new ArrayList<Country>();
+
     public List<Country> all() {
         System.out.println("Enters CountryManager.all()");
 
