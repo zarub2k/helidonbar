@@ -70,8 +70,8 @@ kubectl get service helidonbar  # Verify deployed service
 ## Focus
 * JAX-RS
     - REST APIs
-    - Start up / Shutdown listener
     - Exception handling
+    - Response with Link (Create)
 * Config
     - Microprofile configuration options
 * Healthcheck
@@ -81,3 +81,5 @@ kubectl get service helidonbar  # Verify deployed service
 * Rest Client
 * JWT Authentication
 * Open tracing
+* General
+    - - Start up / Shutdown listener
