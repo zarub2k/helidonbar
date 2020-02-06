@@ -1,7 +1,7 @@
 package com.hustlebar.helidonbar.core;
 
 public class HelidonbarException extends Exception {
-    String code;
+    int code;
 
     public HelidonbarException() { super(); }
 
@@ -9,12 +9,12 @@ public class HelidonbarException extends Exception {
         super(message);
     }
 
-    public HelidonbarException(String code, String message) {
+    public HelidonbarException(int code, String message) {
         this(message);
         this.code = code;
     }
 
-    public String getCode() {
+    public int getCode() {
         return code;
     }
 }

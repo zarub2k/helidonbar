@@ -23,6 +23,7 @@ import javax.enterprise.context.ApplicationScoped;
 import javax.ws.rs.ApplicationPath;
 import javax.ws.rs.core.Application;
 
+import com.hustlebar.helidonbar.core.HelidonbarExceptionMapper;
 import com.hustlebar.helidonbar.country.CountryApi;
 import com.hustlebar.helidonbar.ping.PingApi;
 import io.helidon.common.CollectionsHelper;
@@ -39,6 +40,7 @@ public class HelidonbarApplication extends Application {
         Set<Class<?>> classes = new HashSet<>();
 
         classes.addAll(addResources());
+        classes.addAll(addProviders());
         return classes;
     }
 
@@ -47,6 +49,12 @@ public class HelidonbarApplication extends Application {
                 GreetResource.class,
                 PingApi.class,
                 CountryApi.class
+        );
+    }
+
+    private Set<Class<?>> addProviders() {
+        return CollectionsHelper.setOf(
+                HelidonbarExceptionMapper.class
         );
     }
 }

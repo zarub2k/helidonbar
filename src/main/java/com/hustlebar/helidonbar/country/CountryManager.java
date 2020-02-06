@@ -1,5 +1,7 @@
 package com.hustlebar.helidonbar.country;
 
+import com.hustlebar.helidonbar.core.HelidonbarException;
+
 import javax.enterprise.context.ApplicationScoped;
 import java.util.ArrayList;
 import java.util.List;
@@ -11,6 +13,27 @@ public class CountryManager {
         System.out.println("Enters CountryManager.all()");
 
         return countries;
+    }
+
+    public Country get(String code) throws HelidonbarException {
+        System.out.println("Enters CountryManager.get() with code: " + code);
+
+        if (code == null || code.isEmpty()) {
+            throw new HelidonbarException(404, "Country is not found with the given code");
+        }
+
+        Country matchedCountry = null;
+        for (Country country : countries) {
+            if (country.getCode().equalsIgnoreCase(code)) {
+                matchedCountry = country;
+            }
+        }
+
+        if (matchedCountry == null) {
+            throw new HelidonbarException(404, "Country is not found with the given code");
+        }
+
+        return matchedCountry;
     }
 
     static {

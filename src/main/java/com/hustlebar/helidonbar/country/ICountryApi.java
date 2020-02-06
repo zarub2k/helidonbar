@@ -1,5 +1,7 @@
 package com.hustlebar.helidonbar.country;
 
+import com.hustlebar.helidonbar.core.HelidonbarException;
+
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
@@ -15,5 +17,5 @@ public interface ICountryApi {
 
     @GET
     @Path("{code}")
-    Response get(@PathParam("code") String code);
+    Response get(@PathParam("code") String code) throws HelidonbarException;
 }
