@@ -18,10 +18,8 @@ public class PingApi implements IPingApi {
     @Override
     public String welcome(String name) {
         String welcomeValue = config.getValue("app.welcome", String.class);
-        System.out.println(welcomeValue);
 
         String formattedValue = MessageFormat.format(welcomeValue, name);
-        System.out.println(formattedValue);
         return formattedValue;
     }
 }
