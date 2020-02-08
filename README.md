@@ -73,7 +73,12 @@ kubectl get service helidonbar  # Verify deployed service
     - Exception handling
     - Response with Link (Create)
 * Config
-    - Microprofile configuration options
+    - Microprofile configuration options (System, Environment, microprofile-config)
+    - System override
+        - java -Dapp.welcome="" -jar target\app.jar
+    - Environment override
+        - Export APP_WELCOME=Welcome {0}
+        - java -jar target\app.jar
 * Healthcheck
 * Metrics
 * Fault tolerance
