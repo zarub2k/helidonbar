@@ -87,9 +87,11 @@ kubectl get service helidonbar  # Verify deployed service
         - available disk space
         - available heap memory
     - Custom
-        - Liveness
-            - 
+        - @Liveness
+            - Available in /health/live
         - Readiness
+            - @Readiness
+            - Available in /health/ready
 * Metrics
 * Fault tolerance
 * Open API
