@@ -92,7 +92,11 @@ kubectl get service helidonbar  # Verify deployed service
         - Readiness
             - @Readiness
             - Available in /health/ready
-* Metrics
+* Metrics (/metrics) [text and json format]
+    - 3 scopes of metrics
+        - base (/metrics/base)
+        - vendor (/metrics/vendor)
+        - application (/metrics/application)
 * Fault tolerance
 * Open API
 * Rest Client
