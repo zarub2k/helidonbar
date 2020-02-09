@@ -79,7 +79,9 @@ kubectl get service helidonbar  # Verify deployed service
     - Environment override
         - Export APP_WELCOME=Welcome {0}
         - java -jar target\app.jar
-* Healthcheck
+    - Options
+        - @Config / @ConfigProperty
+* Health Check
 * Metrics
 * Fault tolerance
 * Open API
