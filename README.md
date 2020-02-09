@@ -82,6 +82,14 @@ kubectl get service helidonbar  # Verify deployed service
     - Options
         - @Config / @ConfigProperty
 * Health Check
+    - In-built outcomes (state & outcome is deprecated in 2.0) /health
+        - deadlock detection
+        - available disk space
+        - available heap memory
+    - Custom
+        - Liveness
+            - 
+        - Readiness
 * Metrics
 * Fault tolerance
 * Open API
