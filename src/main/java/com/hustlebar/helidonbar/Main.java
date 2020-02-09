@@ -55,6 +55,7 @@ public final class Main {
         // Server will automatically pick up configuration from
         // microprofile-config.properties
         // and Application classes annotated as @ApplicationScoped
+//        Server.builder().build()
         return Server.create().start();
     }
 
