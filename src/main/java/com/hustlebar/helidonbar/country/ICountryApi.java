@@ -1,6 +1,7 @@
 package com.hustlebar.helidonbar.country;
 
 import com.hustlebar.helidonbar.core.HelidonbarException;
+import org.eclipse.microprofile.metrics.annotation.Counted;
 
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;

@@ -1,6 +1,7 @@
 package com.hustlebar.helidonbar.country;
 
 import com.hustlebar.helidonbar.core.HelidonbarException;
+import org.eclipse.microprofile.metrics.annotation.Counted;
 
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
@@ -32,6 +33,7 @@ public class CountryApi implements ICountryApi {
     }
 
     @Override
+    @Counted(name = "get-country")
     public Response get(String code) throws HelidonbarException {
         Country country = manager.get(code);
         return Response.ok()

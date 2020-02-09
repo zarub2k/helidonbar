@@ -97,6 +97,11 @@ kubectl get service helidonbar  # Verify deployed service
         - base (/metrics/base)
         - vendor (/metrics/vendor)
         - application (/metrics/application)
+            - types
+                - @Counted (Register a Counter metrics)
+                - @Timed (Register a Timer metrics)
+                - @Metered (Register a Meter metrics)
+                - Histogram or Gauge
 * Fault tolerance
 * Open API
 * Rest Client
