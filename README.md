@@ -102,6 +102,8 @@ kubectl get service helidonbar  # Verify deployed service
                 - @Timed (Register a Timer metrics)
                 - @Metered (Register a Meter metrics)
                 - Histogram or Gauge
+            - metrics can be configured at the class, method or field
+            - Metrics can also be re-used across different methods (reusable = true)
 * Fault tolerance
 * Open API
 * Rest Client
