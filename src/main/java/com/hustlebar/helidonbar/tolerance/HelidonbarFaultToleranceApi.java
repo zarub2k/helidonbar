@@ -1,6 +1,7 @@
 package com.hustlebar.helidonbar.tolerance;
 
 import com.hustlebar.helidonbar.core.HelidonbarException;
+import org.eclipse.microprofile.faulttolerance.Fallback;
 import org.eclipse.microprofile.faulttolerance.Retry;
 import org.eclipse.microprofile.faulttolerance.Timeout;
 import org.eclipse.microprofile.faulttolerance.exceptions.TimeoutException;
@@ -56,6 +57,13 @@ public class HelidonbarFaultToleranceApi implements IHelidonbarFaultToleranceApi
         }
 
 
+        return null;
+    }
+
+    @Override
+    @Timeout(500)
+    @Fallback(HelidonbarFallbackHandler.class)
+    public Response timeoutWithFallbackHandler(int wait) {
         return null;
     }
 

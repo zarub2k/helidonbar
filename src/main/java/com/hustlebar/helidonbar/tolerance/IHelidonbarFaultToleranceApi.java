@@ -20,4 +20,8 @@ public interface IHelidonbarFaultToleranceApi {
     @GET
     @Path("timeout-fallback-method")
     Response timeoutWithFallbackMethod(@QueryParam("wait") int wait);
+
+    @GET
+    @Path("timeout-fallback-handler")
+    Response timeoutWithFallbackHandler(@QueryParam("wait") int wait);
 }
