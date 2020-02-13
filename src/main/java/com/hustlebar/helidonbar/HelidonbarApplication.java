@@ -25,7 +25,7 @@ import javax.ws.rs.core.Application;
 
 import com.hustlebar.helidonbar.core.HelidonbarExceptionMapper;
 import com.hustlebar.helidonbar.country.CountryApi;
-import com.hustlebar.helidonbar.fault.HelidonbarFaultToleranceApi;
+import com.hustlebar.helidonbar.tolerance.HelidonbarFaultToleranceApi;
 import com.hustlebar.helidonbar.ping.PingApi;
 import io.helidon.common.CollectionsHelper;
 

@@ -1,4 +1,4 @@
-package com.hustlebar.helidonbar.fault;
+package com.hustlebar.helidonbar.tolerance;
 
 import com.hustlebar.helidonbar.core.HelidonbarException;
 import org.eclipse.microprofile.faulttolerance.Retry;
@@ -29,13 +29,30 @@ public class HelidonbarFaultToleranceApi implements IHelidonbarFaultToleranceApi
     @Override
     @Timeout(500)
     @Retry (retryOn = TimeoutException.class)
-    public Response timeoutWithRetry(int wait) throws HelidonbarException {
+    public Response timeoutWithRetryOn(int wait) throws HelidonbarException {
         System.out.println("Enters HelidonbarFaultToleranceApi.timeoutWithRetry()");
 
         try {
             Thread.sleep(wait * 1000);
         } catch (InterruptedException e) {
             e.printStackTrace();
+        }
+
+
+        return null;
+    }
+
+    @Override
+    @Timeout(500)
+    public Response timeoutWithFallbackMethod(int wait) {
+        System.out.println("Enters HelidonbarFaultToleranceApi.timeoutWithFallbackMethod() with wait: " + wait);
+
+        if (wait > 2) {
+            try {
+                Thread.sleep(wait * 1000);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
         }
 
 

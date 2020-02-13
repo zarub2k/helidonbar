@@ -1,7 +1,6 @@
-package com.hustlebar.helidonbar.fault;
+package com.hustlebar.helidonbar.tolerance;
 
 import com.hustlebar.helidonbar.core.HelidonbarException;
-import org.eclipse.microprofile.faulttolerance.Timeout;
 
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
@@ -15,6 +14,10 @@ public interface IHelidonbarFaultToleranceApi {
     Response timeout(@QueryParam("wait") int wait) throws HelidonbarException;
 
     @GET
-    @Path("timeout-retry")
-    Response timeoutWithRetry(@QueryParam("wait") int wait) throws HelidonbarException;
+    @Path("timeout-retryOn")
+    Response timeoutWithRetryOn(@QueryParam("wait") int wait) throws HelidonbarException;
+
+    @GET
+    @Path("timeout-fallback-method")
+    Response timeoutWithFallbackMethod(@QueryParam("wait") int wait);
 }
