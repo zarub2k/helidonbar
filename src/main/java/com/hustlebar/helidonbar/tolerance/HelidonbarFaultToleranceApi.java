@@ -1,6 +1,7 @@
 package com.hustlebar.helidonbar.tolerance;
 
 import com.hustlebar.helidonbar.core.HelidonbarException;
+import com.hustlebar.helidonbar.core.HelidonbarResponseGenerator;
 import org.eclipse.microprofile.faulttolerance.Fallback;
 import org.eclipse.microprofile.faulttolerance.Retry;
 import org.eclipse.microprofile.faulttolerance.Timeout;
@@ -18,13 +19,9 @@ public class HelidonbarFaultToleranceApi implements IHelidonbarFaultToleranceApi
     public Response timeout(int wait) throws HelidonbarException {
         System.out.println("Enters HelidonbarFaultToleranceApi.timeout()");
 
-        try {
-            Thread.sleep(wait * 1000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+        sleep(wait);
 
-        return response("Response from timeout");
+        return HelidonbarResponseGenerator.response("Response from timeout");
     }
 
     @Override
@@ -32,13 +29,7 @@ public class HelidonbarFaultToleranceApi implements IHelidonbarFaultToleranceApi
     @Retry (retryOn = TimeoutException.class)
     public Response timeoutWithRetryOn(int wait) throws HelidonbarException {
         System.out.println("Enters HelidonbarFaultToleranceApi.timeoutWithRetry()");
-
-        try {
-            Thread.sleep(wait * 1000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-
+        sleep(wait);
 
         return null;
     }
@@ -48,15 +39,7 @@ public class HelidonbarFaultToleranceApi implements IHelidonbarFaultToleranceApi
     public Response timeoutWithFallbackMethod(int wait) {
         System.out.println("Enters HelidonbarFaultToleranceApi.timeoutWithFallbackMethod() with wait: " + wait);
 
-        if (wait > 2) {
-            try {
-                Thread.sleep(wait * 1000);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
-        }
-
-
+        sleep(wait);
         return null;
     }
 
@@ -64,15 +47,21 @@ public class HelidonbarFaultToleranceApi implements IHelidonbarFaultToleranceApi
     @Timeout(500)
     @Fallback(HelidonbarFallbackHandler.class)
     public Response timeoutWithFallbackHandler(int wait) {
-        return null;
+        System.out.println("Enters HelidonbarFaultToleranceApi.timeoutWithFallbackHandler() with wait: " + wait);
+        sleep(wait);
+
+        return HelidonbarResponseGenerator.response("Response from timeoutWithFallbackHandler()");
     }
 
-    private Response response(String message) {
-        Map<String, String> data = new HashMap<>();
-        data.put("value", message);
+    private void sleep(int wait) {
+        System.out.println("Forced sleep for " + wait + "min");
 
-        return Response.ok()
-                .entity(data)
-                .build();
+        if (wait > 2) {
+            try {
+                Thread.sleep(wait * 1000);
+            } catch (InterruptedException e) {
+                System.out.println("Sleep is interrupted");
+            }
+        }
     }
 }
