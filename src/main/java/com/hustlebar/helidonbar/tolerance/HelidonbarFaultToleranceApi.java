@@ -36,11 +36,12 @@ public class HelidonbarFaultToleranceApi implements IHelidonbarFaultToleranceApi
 
     @Override
     @Timeout(500)
+    @Fallback(fallbackMethod = "onFallbackMethod")
     public Response timeoutWithFallbackMethod(int wait) {
         System.out.println("Enters HelidonbarFaultToleranceApi.timeoutWithFallbackMethod() with wait: " + wait);
-
         sleep(wait);
-        return null;
+
+        return HelidonbarResponseGenerator.response("Response from timeoutWithFallbackMethod()");
     }
 
     @Override
@@ -51,6 +52,10 @@ public class HelidonbarFaultToleranceApi implements IHelidonbarFaultToleranceApi
         sleep(wait);
 
         return HelidonbarResponseGenerator.response("Response from timeoutWithFallbackHandler()");
+    }
+
+    private Response onFallbackMethod(int wait) {
+        return HelidonbarResponseGenerator.response("Generated from onFallbackMethod()");
     }
 
     private void sleep(int wait) {
