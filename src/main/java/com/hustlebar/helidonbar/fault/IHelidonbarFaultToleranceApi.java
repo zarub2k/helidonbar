@@ -13,4 +13,8 @@ public interface IHelidonbarFaultToleranceApi {
     @GET
     @Path("timeout")
     Response timeout(@QueryParam("wait") int wait) throws HelidonbarException;
+
+    @GET
+    @Path("timeout-retry")
+    Response timeoutWithRetry(@QueryParam("wait") int wait) throws HelidonbarException;
 }
