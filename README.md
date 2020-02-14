@@ -105,6 +105,11 @@ kubectl get service helidonbar  # Verify deployed service
             - metrics can be configured at the class, method or field
             - Metrics can also be re-used across different methods (reusable = true)
 * Fault tolerance
+    - Timeout (@Timeout)
+    - Retry (@Retry)
+    - Fallback (@Fallback)
+    - Circuit Breaker
+    - Bulkhead
 * Open API
 * Rest Client
 * JWT Authentication
