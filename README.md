@@ -108,7 +108,10 @@ kubectl get service helidonbar  # Verify deployed service
     - Timeout (@Timeout)
     - Retry (@Retry)
     - Fallback (@Fallback)
+        - FallbackHandler
+        - fallbackMethod
     - Circuit Breaker
+        - states (closed / open / half-open)
     - Bulkhead
 * Open API
 * Rest Client
