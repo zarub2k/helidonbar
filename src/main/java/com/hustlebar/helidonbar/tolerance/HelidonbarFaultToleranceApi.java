@@ -2,9 +2,11 @@ package com.hustlebar.helidonbar.tolerance;
 
 import com.hustlebar.helidonbar.core.HelidonbarException;
 import com.hustlebar.helidonbar.core.HelidonbarResponseGenerator;
+import org.eclipse.microprofile.faulttolerance.CircuitBreaker;
 import org.eclipse.microprofile.faulttolerance.Fallback;
 import org.eclipse.microprofile.faulttolerance.Retry;
 import org.eclipse.microprofile.faulttolerance.Timeout;
+import org.eclipse.microprofile.faulttolerance.exceptions.CircuitBreakerOpenException;
 import org.eclipse.microprofile.faulttolerance.exceptions.TimeoutException;
 
 import javax.enterprise.context.RequestScoped;
@@ -52,6 +54,17 @@ public class HelidonbarFaultToleranceApi implements IHelidonbarFaultToleranceApi
         sleep(wait);
 
         return HelidonbarResponseGenerator.response("Response from timeoutWithFallbackHandler()");
+    }
+
+    @Override
+    @Timeout(500)
+    @CircuitBreaker(successThreshold = 2, requestVolumeThreshold = 4, failureRatio=0.75, delay = 1000)
+    public Response circuitBreak(int wait) {
+        System.out.println("Enters HelibarFaultToleranceApi.circuitBreak()");
+        sleep(wait);
+        String message = "Response from circuitBreak()";
+
+        return HelidonbarResponseGenerator.response(message);
     }
 
     private Response onFallbackMethod(int wait) {

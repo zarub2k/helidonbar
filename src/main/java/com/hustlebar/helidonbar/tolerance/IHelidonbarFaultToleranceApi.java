@@ -24,4 +24,8 @@ public interface IHelidonbarFaultToleranceApi {
     @GET
     @Path("timeout-fallback-handler")
     Response timeoutWithFallbackHandler(@QueryParam("wait") int wait);
+
+    @GET
+    @Path("circuitbreak")
+    Response circuitBreak(@QueryParam("wait") int wait);
 }
