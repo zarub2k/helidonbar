@@ -113,6 +113,8 @@ kubectl get service helidonbar  # Verify deployed service
     - Circuit Breaker
         - states (closed / open / half-open)
     - Bulkhead
+        - Thread pool isolation (@Bulkhead + @Asynchronous)
+        - Semaphore isolation (@Bulkhead)
 * Open API
 * Rest Client
 * JWT Authentication

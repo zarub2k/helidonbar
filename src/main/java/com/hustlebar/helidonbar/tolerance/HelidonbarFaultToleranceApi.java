@@ -67,6 +67,16 @@ public class HelidonbarFaultToleranceApi implements IHelidonbarFaultToleranceApi
         return HelidonbarResponseGenerator.response(message);
     }
 
+    @Override
+    public void bulkhead() {
+        System.out.println("Enters HelidonbarFaultTolerance.bulkhead()");
+    }
+
+    @Override
+    public void bulkheadAsync() {
+        System.out.println("Enters HelidonbarFaultTolerance.bulkheadAsync()");
+    }
+
     private Response onFallbackMethod(int wait) {
         return HelidonbarResponseGenerator.response("Generated from onFallbackMethod()");
     }

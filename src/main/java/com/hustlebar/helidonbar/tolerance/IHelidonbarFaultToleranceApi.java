@@ -28,4 +28,12 @@ public interface IHelidonbarFaultToleranceApi {
     @GET
     @Path("circuitbreak")
     Response circuitBreak(@QueryParam("wait") int wait);
+
+    @GET
+    @Path("/bulkhead")
+    void bulkhead();
+
+    @GET
+    @Path("/bulkhead-async")
+    void bulkheadAsync();
 }
