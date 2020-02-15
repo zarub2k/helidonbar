@@ -6,6 +6,7 @@ import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.Response;
+import java.util.concurrent.Future;
 
 @Path("/tolerance")
 public interface IHelidonbarFaultToleranceApi {
@@ -31,9 +32,9 @@ public interface IHelidonbarFaultToleranceApi {
 
     @GET
     @Path("/bulkhead")
-    void bulkhead();
+    Response bulkhead();
 
     @GET
     @Path("/bulkhead-async")
-    void bulkheadAsync();
+    Future<Response> bulkheadAsync();
 }

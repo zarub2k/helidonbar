@@ -2,10 +2,7 @@ package com.hustlebar.helidonbar.tolerance;
 
 import com.hustlebar.helidonbar.core.HelidonbarException;
 import com.hustlebar.helidonbar.core.HelidonbarResponseGenerator;
-import org.eclipse.microprofile.faulttolerance.CircuitBreaker;
-import org.eclipse.microprofile.faulttolerance.Fallback;
-import org.eclipse.microprofile.faulttolerance.Retry;
-import org.eclipse.microprofile.faulttolerance.Timeout;
+import org.eclipse.microprofile.faulttolerance.*;
 import org.eclipse.microprofile.faulttolerance.exceptions.CircuitBreakerOpenException;
 import org.eclipse.microprofile.faulttolerance.exceptions.TimeoutException;
 
@@ -13,6 +10,8 @@ import javax.enterprise.context.RequestScoped;
 import javax.ws.rs.core.Response;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.Future;
 
 @RequestScoped
 public class HelidonbarFaultToleranceApi implements IHelidonbarFaultToleranceApi {
@@ -68,13 +67,21 @@ public class HelidonbarFaultToleranceApi implements IHelidonbarFaultToleranceApi
     }
 
     @Override
-    public void bulkhead() {
+    @Bulkhead(5)
+    public Response bulkhead() {
         System.out.println("Enters HelidonbarFaultTolerance.bulkhead()");
+
+        return HelidonbarResponseGenerator.response("Generated from bulkhead()");
     }
 
     @Override
-    public void bulkheadAsync() {
+    @Asynchronous
+    @Bulkhead(value = 5, waitingTaskQueue = 10)
+    public Future<Response> bulkheadAsync() {
         System.out.println("Enters HelidonbarFaultTolerance.bulkheadAsync()");
+        return CompletableFuture
+                .completedFuture(
+                        HelidonbarResponseGenerator.response("Generated from bulkheadAsync()"));
     }
 
     private Response onFallbackMethod(int wait) {
