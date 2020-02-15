@@ -114,7 +114,9 @@ kubectl get service helidonbar  # Verify deployed service
         - states (closed / open / half-open)
     - Bulkhead
         - Thread pool isolation (@Bulkhead + @Asynchronous)
+            - Max con-current connection + waiting queue size
         - Semaphore isolation (@Bulkhead)
+            - con-current number of connection only
 * Open API
 * Rest Client
 * JWT Authentication
