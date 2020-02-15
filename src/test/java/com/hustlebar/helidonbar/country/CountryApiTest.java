@@ -36,4 +36,11 @@ public class CountryApiTest {
         System.out.println(response);
         System.out.println(response.getHeaders());
     }
+
+    @Test
+    public void testGetWithProperCode() throws HelidonbarException {
+        Response response = countryApi.get("USA");
+        Country country = response.readEntity(Country.class);
+        System.out.println(country);
+    }
 }
