@@ -118,6 +118,9 @@ kubectl get service helidonbar  # Verify deployed service
         - Semaphore isolation (@Bulkhead)
             - con-current number of connection only
 * Open API
+    - Open api through annotation
+    - Static openapi file under META-INF (META-INF/openapi.yaml or openapi.json or openapi.yml)
+    - Generate through code (Implement OASModelReader and change configuration 'mp.openapi.model.reader')
 * Rest Client
 * JWT Authentication
 * Open tracing
