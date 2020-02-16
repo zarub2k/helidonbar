@@ -122,6 +122,7 @@ kubectl get service helidonbar  # Verify deployed service
     - Static openapi file under META-INF (META-INF/openapi.yaml or openapi.json or openapi.yml)
     - Generate through code (Implement OASModelReader and change configuration 'mp.openapi.model.reader')
 * Rest Client
+    - Type based rest client
 * JWT Authentication
 * Open tracing
 * General
