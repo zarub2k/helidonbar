@@ -8,7 +8,8 @@ import javax.enterprise.context.Initialized;
 import javax.enterprise.event.Observes;
 import java.time.Duration;
 import java.util.concurrent.atomic.AtomicLong;
-//
+
+
 @ApplicationScoped
 public class HelidonbarMetricsGauge {
     private AtomicLong startTime = new AtomicLong(0);
