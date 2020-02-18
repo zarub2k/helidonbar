@@ -58,7 +58,8 @@ public class HelidonbarFaultToleranceApi implements IHelidonbarFaultToleranceApi
 
     @Override
     @Timeout(500)
-    @CircuitBreaker(successThreshold = 3, requestVolumeThreshold = 4, failureRatio=0.75, delay = 1000)
+    @CircuitBreaker(requestVolumeThreshold = 4, failureRatio = 0.75,
+            successThreshold = 3, delay = 1000)
     @Fallback(CircuitBreakerOpenExceptionHandler.class)
     public Response circuitBreak(int wait) {
         System.out.println("Enters HelibarFaultToleranceApi.circuitBreak()");
