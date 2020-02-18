@@ -11,5 +11,10 @@ import javax.ws.rs.core.Response;
 @RegisterRestClient(baseUri = "http://localhost:8080")
 public interface ICalculatorApi {
     @GET
+    @Path("add")
     Response add(@QueryParam("num1") long num1, @QueryParam("num2") long num2);
+
+    @GET
+    @Path("subtract")
+    Response subtract(@QueryParam("num1") long num1, @QueryParam("num2") long num2);
 }
