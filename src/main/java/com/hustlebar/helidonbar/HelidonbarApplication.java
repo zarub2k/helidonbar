@@ -25,6 +25,7 @@ import javax.ws.rs.core.Application;
 
 import com.hustlebar.helidonbar.core.HelidonbarExceptionMapper;
 import com.hustlebar.helidonbar.country.CountryApi;
+import com.hustlebar.helidonbar.restclient.CalculatorApi;
 import com.hustlebar.helidonbar.tolerance.HelidonbarFaultToleranceApi;
 import com.hustlebar.helidonbar.ping.PingApi;
 import io.helidon.common.CollectionsHelper;
@@ -50,7 +51,8 @@ public class HelidonbarApplication extends Application {
                 GreetResource.class,
                 PingApi.class,
                 CountryApi.class,
-                HelidonbarFaultToleranceApi.class
+                HelidonbarFaultToleranceApi.class,
+                CalculatorApi.class
         );
     }
 
