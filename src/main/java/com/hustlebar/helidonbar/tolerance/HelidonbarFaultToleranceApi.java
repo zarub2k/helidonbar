@@ -19,7 +19,6 @@ public class HelidonbarFaultToleranceApi implements IHelidonbarFaultToleranceApi
     @Timeout
     public Response timeout(int wait) throws HelidonbarException {
         System.out.println("Enters HelidonbarFaultToleranceApi.timeout()");
-
         sleep(wait);
 
         return HelidonbarResponseGenerator.response("Response from timeout");
@@ -27,7 +26,9 @@ public class HelidonbarFaultToleranceApi implements IHelidonbarFaultToleranceApi
 
     @Override
     @Timeout(500)
-    @Retry (retryOn = TimeoutException.class)
+//    @Retry (retryOn = TimeoutException.class)
+
+    @Retry (retryOn = TimeoutException.class, maxRetries = 2, delay = 1000)
     public Response timeoutWithRetryOn(int wait) throws HelidonbarException {
         System.out.println("Enters HelidonbarFaultToleranceApi.timeoutWithRetry()");
         sleep(wait);
@@ -57,13 +58,13 @@ public class HelidonbarFaultToleranceApi implements IHelidonbarFaultToleranceApi
 
     @Override
     @Timeout(500)
-    @CircuitBreaker(successThreshold = 2, requestVolumeThreshold = 4, failureRatio=0.75, delay = 1000)
+    @CircuitBreaker(successThreshold = 3, requestVolumeThreshold = 4, failureRatio=0.75, delay = 1000)
+    @Fallback(CircuitBreakerOpenExceptionHandler.class)
     public Response circuitBreak(int wait) {
         System.out.println("Enters HelibarFaultToleranceApi.circuitBreak()");
         sleep(wait);
-        String message = "Response from circuitBreak()";
 
-        return HelidonbarResponseGenerator.response(message);
+        return HelidonbarResponseGenerator.response("Response from circuitBreak()");
     }
 
     @Override
