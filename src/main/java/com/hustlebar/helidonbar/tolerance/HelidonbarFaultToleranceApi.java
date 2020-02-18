@@ -32,7 +32,7 @@ public class HelidonbarFaultToleranceApi implements IHelidonbarFaultToleranceApi
         System.out.println("Enters HelidonbarFaultToleranceApi.timeoutWithRetry()");
         sleep(wait);
 
-        return null;
+        return HelidonbarResponseGenerator.response("Response from timeoutWithRetryOn()");
     }
 
     @Override
