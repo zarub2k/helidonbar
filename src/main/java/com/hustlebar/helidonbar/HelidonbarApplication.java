@@ -31,7 +31,7 @@ import com.hustlebar.helidonbar.ping.PingApi;
 import io.helidon.common.CollectionsHelper;
 
 /**
- * Simple Application that produces a greeting message.
+ * Helidonbar Application.
  */
 @ApplicationScoped
 @ApplicationPath("/")
