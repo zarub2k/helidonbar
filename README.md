@@ -130,5 +130,6 @@ kubectl get service helidonbar  # Verify deployed service
 
 ## Reference
     https://download.eclipse.org/microprofile/
+    https://github.com/eclipse/microprofile
     https://www.sport-histoire.fr/en/Geography/ISO_codes_countries.php
     https://dennis-xlc.gitbooks.io/restful-java-with-jax-rs-2-0-en/content/en/index.html
