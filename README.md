@@ -125,6 +125,8 @@ kubectl get service helidonbar  # Verify deployed service
     - Type based rest client
 * JWT Authentication
 * Open tracing
+    - @Tracing
+    - Zipkin / Jaeger
 * General
     - Start up / Shutdown listener
 
