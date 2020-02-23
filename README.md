@@ -123,6 +123,7 @@ kubectl get service helidonbar  # Verify deployed service
     - Generate through code (Implement OASModelReader and change configuration 'mp.openapi.model.reader')
 * Rest Client
     - Type based rest client
+    - Rest client with annotation
 * JWT Authentication
     - TODO
 * Open tracing
